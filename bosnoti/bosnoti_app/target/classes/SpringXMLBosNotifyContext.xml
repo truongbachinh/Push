@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="bosNotifyTask" class="com.service.BOSNotifySchedulerTask"></bean>
+    <bean id="bosNotifySchedulerJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.scheduler.BosNotifySchedulerJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="bosNotifySchedulerTask" value-ref="bosNotifyTask" />
+            </map>
+        </property>
+        <property name ="durability" value="true"></property>
+    </bean>
+
+    <!-- Cron Trigger, run every 5 seconds
+        1, Seconds
+        2, Minutes
+        3, Hours
+        4, Day-of-Month
+        5, Month
+        6, Day-of-Week
+        7, Year (optional field)
+    -->
+
+    <bean id="bosSchedulerJobCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="bosNotifySchedulerJob" />
+        <property name="cronExpression" value="*/10 * * * * ?" />
+    </bean>
+
+    <!-- Execute the declared schedule jobs -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="bosSchedulerJobCronTrigger" />
+            </list>
+        </property>
+
+        <property name="quartzProperties">
+            <util:properties>
+                <prop key="org.quartz.threadPool.threadCount">
+                    ${quartz.threadPool.threadCount}
+                </prop>
+            </util:properties>
+        </property>
+    </bean>
+
+</beans>

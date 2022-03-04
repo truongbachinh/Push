@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: jackson-datatype-jdk8-2.12.3.jar spring-boot-starter-logging
+ -2.5.0.jar slf4j-api-1.7.30.jar spring-boot-autoconfigure-2.5.0.jar jac
+ kson-annotations-2.12.3.jar aerogear-otp-java-1.0.0.jar spring-web-5.3.
+ 7.jar spring-beans-5.3.7.jar snakeyaml-1.28.jar jackson-databind-2.12.3
+ .jar jackson-core-2.12.3.jar spring-core-5.3.7.jar spring-expression-5.
+ 3.7.jar spring-webmvc-5.3.7.jar jakarta.annotation-api-1.3.5.jar jul-to
+ -slf4j-1.7.30.jar spring-boot-2.5.0.jar tomcat-embed-el-9.0.46.jar log4
+ j-api-2.14.1.jar spring-boot-starter-tomcat-2.5.0.jar spring-jcl-5.3.7.
+ jar spring-aop-5.3.7.jar jackson-module-parameter-names-2.12.3.jar spri
+ ng-boot-starter-2.5.0.jar logback-core-1.2.3.jar spring-context-5.3.7.j
+ ar tomcat-embed-websocket-9.0.46.jar spring-boot-starter-web-2.5.0.jar 
+ log4j-to-slf4j-2.14.1.jar java-otp-0.1.0.jar spring-boot-starter-json-2
+ .5.0.jar logback-classic-1.2.3.jar tomcat-embed-core-9.0.46.jar jackson
+ -datatype-jsr310-2.12.3.jar
+
